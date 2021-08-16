@@ -1,3 +1,4 @@
+import random
 rock = '''
     _______
 ---'   ____)
@@ -23,59 +24,53 @@ scissors = '''
        __________)
       (____)
 ---.__(___)
-'''
-##################################
-import random
-choice = input("What do you choose? 'rock','paper' or 'scissors' ")
-# computer choice random.choice()
-choice_box = ["r","p","s"]
-computer_choice = random.choice(choice_box)
-# checking player input i.e input controll if it is right then only code is going to continue if it is wrong then player loose 
-if choice[0].lower() not in choice_box:
-  print("you loose because you choose a wrong option")
-else:
-  print("You selected.")
-  # player choice printing
-  if choice[0].lower() == "r":
-    print(rock)
-  elif choice[0].lower() == "p":
-    print(paper)
-  else:
-    print(scissors)
-  # computer choice printing
-  print("computer selects.")
-  if computer_choice == "r":
-    print(rock)
-  elif computer_choice == "p":
-    print(paper)
-  else:
-    print(scissors)
-  # game logic
-  result = 0
 
-  if choice[0].lower() == computer_choice:
-    result += 1
-  else:
-    if choice[0].lower()=="r" and computer_choice == "s":
-      result += 2 #win for result = 2
-    elif choice[0].lower()=="r" and computer_choice == "p":
-      result += 3 # loss
+'''
+ascii_char = [" ",rock,paper,scissors]
+
+##################################
+
+
+def welcome() -> None:
+    print("Welcomme to Rock paper Scissors World class Console game.")
+
+def user_choice() -> int:
+    choice = int(input("What do you choose? 1='rock',2='paper' or 3='scissors' "))
+    if choice not in (1,2,3):
+        choice = int(input("Make a vaid choice:1='rock',2='paper' or 3='scissors': "))
     else:
-      if choice[0].lower()=="p" and computer_choice == "r":
-        result += 2 #win for result = 2
-      elif choice[0].lower()=="p" and computer_choice == "s":
-        result += 3 # loss
-      else:
-        if choice[0].lower()=="s" and computer_choice == "p":
-          result += 2 #win for result = 2
-        else:
-          
-          result += 3
+        return choice
+
+
+computer_choice = random.choice((1,2,3))
+
+def game_mind(user, computer) -> int:
+    if user==computer:
+        return 0
+    elif user == 3 and computer == 1:
+        return -1
+    elif user > computer:
+        return 1
+    elif user == 1 and computer ==3:
+        return 1
+    else:
+        return -1
+
+
+def cui(user, computer)->None:
     
-  # result printing
-  if result == 1:
-    print("It's draw!")
-  elif result == 2:
-    print("You have won the game!")
-  else:
-    print("you loose!")
+    print(f"You Choose: {ascii_char[user]}  Computer Choose: {ascii_char[computer]} ")
+    if game_mind(user, computer) == 0:
+        print("Its a draw!")
+    elif game_mind(user, computer) == 1:
+        print("you won!")
+    else:
+        print("You loose")
+
+def main() -> None:
+    welcome()
+    user_coose = user_choice()
+    cui(user=user_coose, computer=computer_choice)
+
+if __name__=='__main__':
+    main()

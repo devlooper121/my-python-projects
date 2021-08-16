@@ -60,10 +60,10 @@ def game():
                 print("Thank you!")
             return
         
-        
-print("i am thinking number between 1 and 100.")
-play_or = input("Do you wanna guss that number? 'y' or 'n': ").lower()
-if play_or == 'y':
-    game()
-else:
-    print("goodbye!")
+if __name__=='__main__':      
+    print("i am thinking number between 1 and 100.")
+    play_or = input("Do you wanna guss that number? 'y' or 'n': ").lower()
+    if play_or == 'y':
+        game()
+    else:
+        print("goodbye!")

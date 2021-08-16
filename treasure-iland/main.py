@@ -54,20 +54,26 @@ trout = """
 """
 ######################################################
 
-choice1 = input("you are at a cross road. Where do you want to go? Type 'left' or 'right'\n")
-if choice1.lower() == "left" :
-  choice2 = input("You come to a lake. There is an island in the middle of the lake. Type 'wait' to wait for boat. Type 'swim' to swim across.\n")
-  if choice2.lower() == "wait":
-    choice3 = input("You arrived at island unharted. There is a house with 3 doors. One red , one yellow and one blue. Which colour do you choose?\n")
-    if choice3.lower() == "yellow":
-      print("you won!")
-    elif choice3.lower() == "red":
-      print("You burned by Fire!!\nGame Over!!")
-    elif choice3.lower() == "blue":
-      print("You eaten by beast!!\nGame Over!!")
+
+def main() -> None:
+  choice1 = input("you are at a cross road. Where do you want to go? Type 'left' or 'right'\n")
+  if choice1.lower() == "left" :
+    choice2 = input("You come to a lake. There is an island in the middle of the lake. Type 'wait' to wait for boat. Type 'swim' to swim across.\n")
+    if choice2.lower() == "wait":
+      choice3 = input("You arrived at island unharted. There is a house with 3 doors. One red , one yellow and one blue. Which colour do you choose?\n")
+      if choice3.lower() == "yellow":
+        print("you won!")
+      elif choice3.lower() == "red":
+        print("You burned by Fire!!\nGame Over!!")
+      elif choice3.lower() == "blue":
+        print("You eaten by beast!!\nGame Over!!")
+      else:
+        print("Game Over!!")
     else:
-      print("Game Over!!")
+      print(f"You attacked by trout!!{trout}\nGame Over!!")
   else:
-    print(f"You attacked by trout!!{trout}\nGame Over!!")
-else:
-  print(f"you fall into a hole!!{hole} \ngame Over!!")
+    print(f"you fall into a hole!!{hole} \ngame Over!!")
+
+
+if __name__=="__main__":
+    main()
